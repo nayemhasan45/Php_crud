@@ -14,7 +14,7 @@
 <body>
     <div class="w-1/2 mx-auto space-y-5">
         <div class="text-center text-4xl">
-            <h1 class="font-bold">Submit Your Details</h1>
+            <h1 class="font-bold">Please Sign Up</h1>
         </div>
         <form action="" method="POST">
             <div class="space-y-6">

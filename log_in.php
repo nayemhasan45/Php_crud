@@ -22,37 +22,56 @@
                 <h2>Sign In</h2>
 
                 <div class="form">
+                    <form action="#" method="POST">
+                        <div class="inputBox">
 
-                    <div class="inputBox">
+                            <input type="text" name="email" required> <i>Email</i>
 
-                        <input type="text" required> <i>Username</i>
+                        </div>
 
-                    </div>
+                        <div class="inputBox">
 
-                    <div class="inputBox">
+                            <input type="password" name="pass" required> <i>Password</i>
 
-                        <input type="password" required> <i>Password</i>
+                        </div>
 
-                    </div>
+                        <div class="links"> <a href="#">Forgot Password</a> <a href="http://localhost/assignment/lab_work_5/">Signup</a>
 
-                    <div class="links"> <a href="#">Forgot Password</a> <a href="#">Signup</a>
+                        </div>
 
-                    </div>
+                        <div class="inputBox">
 
-                    <div class="inputBox">
+                            <input type="submit" name="loginBtn" value="Login">
 
-                        <input type="submit" value="Login">
-
-                    </div>
-
+                        </div>
+                    </form>
                 </div>
 
             </div>
 
         </div>
 
+
     </section> <!-- partial -->
 
 </body>
 
 </html>
+
+<?php
+include('connect.php');
+if(isset($_POST['loginBtn'])){
+    $email=$_POST['email'];
+    $pass=&$_POST['pass'];
+    $getData = "SELECT * FROM userdata WHERE email='$email'&& password='$pass'";
+    $data = mysqli_query($con,$getData);
+    $result = mysqli_num_rows($data);
+    if($result){
+        ?>
+        <meta http-equiv="refresh" content="0; url=http://localhost/assignment/lab_work_5/display.php" />
+        <?php
+    }else{
+        echo "<script>alert('login failed')</script> ";
+    }
+};
+?>
