@@ -49,18 +49,27 @@
         .btn_2 {
             background-color: orange;
         }
-        .SignUp{
+        .SignUp,.logOutBtn input{
             padding: 10px 20px;
             border: none;
             cursor: pointer;
             font-size: 20px;
             background-color:tomato;
             border-radius: 5px;
+            color: white;
+            font-weight: bold;
         }
         .SignUp a{
             text-decoration: none;
             color: white;
             font-weight: bold;
+        }
+        .logOutBtn{
+            text-align: center;
+        }
+        .logOutBtn input{
+            background-color: red;
+            
         }
     </style>
 </head>
@@ -85,7 +94,7 @@ if ($row != 0) {
     <div class="container">
         <div class="heading">
             <h2 class="heading_text">Displaying All User</h2>
-            <button class="SignUp"><a href="http://localhost/assignment/lab_work_5/sign_up.php">Add New User</a></button>
+            <a href="http://localhost/assignment/lab_work_5/index.php"><button class="SignUp">Add New User</button></a>
         </div>
         <table class="table" border="2" cellspacing="7" width="100%">
             <tr>
@@ -123,7 +132,9 @@ if ($row != 0) {
         ?>
         </table>
     </div>
-
+    <div class="logOutBtn">
+        <a href="log_out.php"><input type="submit" value="Log Out"></a>
+    </div>
     <script>
         function deleteUser() {
             return confirm('are you sure you want to delete this user');
