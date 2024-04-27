@@ -1,7 +1,6 @@
 <?php
-    session_start();
+include('connect.php');
 ?>
-
 <!doctype html>
 
 <html lang="en">
@@ -23,29 +22,34 @@
 
             <div class="content">
 
-                <h2>Sign In</h2>
+                <h2>Sign Up</h2>
 
                 <div class="form">
                     <form action="#" method="POST">
                         <div class="inputBox">
 
-                            <input type="text" name="email" required> <i>Email</i>
+                            <input type="text" class="grow" placeholder="Username" name="name" required />
 
                         </div>
 
                         <div class="inputBox">
 
-                            <input type="password" name="pass" required> <i>Password</i>
+                            <input type="text" class="grow" placeholder="Email" name="email" required />
+
+                        </div>
+                        <div class="inputBox">
+
+                            <input type="password" class="grow" placeholder="Password" name="password" required />
 
                         </div>
 
-                        <div class="links"> <a href="#">Forgot Password</a> <a href="http://localhost/assignment/lab_work_5/">Signup</a>
+                        <div class="links"> <a href="#">Forgot Password</a> <a href="http://localhost/assignment/lab_work_5/log_in.php">Sign In</a>
 
                         </div>
 
                         <div class="inputBox">
 
-                            <input type="submit" name="loginBtn" value="Login">
+                            <input type="submit" value="Sign Up" class="btn btn-primary w-1/3 text-xl font-bold" name="register">
 
                         </div>
                     </form>
@@ -62,21 +66,25 @@
 
 </html>
 
+
 <?php
-include('connect.php');
-if(isset($_POST['loginBtn'])){
-    $email=$_POST['email'];
-    $pass=&$_POST['pass'];
-    $getData = "SELECT * FROM userdata WHERE email='$email'&& password='$pass'";
-    $data = mysqli_query($con,$getData);
-    $result = mysqli_num_rows($data);
-    if($result){
-        $_SESSION['user']=$email;
-?>
-<meta http-equiv="refresh" content="0; url=http://localhost/assignment/lab_work_5/display.php" />
-<?php
-    }else{
-        echo "<script>alert('login failed')</script> ";
+error_reporting(0);
+// session_start();
+// $userProfile = $_SESSION['user'];
+// if (!$userProfile) {
+//     header('location:log_in.php');
+// }
+if ($_POST['register']) {
+    $userName = $_POST['name'];
+    $userEmail = $_POST['email'];
+    $userPass = $_POST['password'];
+
+    $data = "INSERT INTO userdata(name,email,password) values('$userName','$userEmail','$userPass')";
+    $storeData = mysqli_query($con, $data);
+    if ($storeData) {
+        echo "<script>alert('data added successfully')</script>";
+    } else {
+        echo "data not added";
     }
-};
+}
 ?>

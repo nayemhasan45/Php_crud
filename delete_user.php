@@ -1,5 +1,13 @@
 <?php
 include('connect.php');
+session_start();
+$userProfile=$_SESSION['user'];
+if(!$userProfile){
+header('location:log_in.php');
+?>
+<meta http-equiv="refresh" content="0; url=http://localhost/assignment/lab_work_5/log_in.php" />
+<?php
+}
 $id=$_GET['id'];
 $getData = "DELETE FROM  userdata  WHERE id='$id'";
 $result = mysqli_query($con,$getData);

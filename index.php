@@ -35,16 +35,16 @@
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4 opacity-70">
                         <path fill-rule="evenodd" d="M14 6a4 4 0 0 1-4.899 3.899l-1.955 1.955a.5.5 0 0 1-.353.146H5v1.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-2.293a.5.5 0 0 1 .146-.353l3.955-3.955A4 4 0 1 1 14 6Zm-4-2a.75.75 0 0 0 0 1.5.5.5 0 0 1 .5.5.75.75 0 0 0 1.5 0 2 2 0 0 0-2-2Z" clip-rule="evenodd" />
                     </svg>
-                    <input type="password" class="grow" name="password" required />
+                    <input type="password" class="grow" placeholder="Password" name="password" required />
                 </label>
                 <div class="text-center">
-                    <input type="submit" value="submit" class="btn btn-primary w-1/3 text-xl font-bold" name="register">
+                    <input type="submit" value="Sign Up" class="btn btn-primary w-1/3 text-xl font-bold" name="register">
                 </div>
             </div>
         </form>
         <div>
-            <a href="http://localhost/assignment/lab_work_5/display.php">
-                <input type="submit" value="Visit Users" class="btn btn-success w-full text-white text-xl">
+            <a href="http://localhost/assignment/lab_work_5/log_in.php">
+                <input type="submit" value="Sign in" class="btn btn-success w-full text-white text-xl">
             </a>
         </div>
 
@@ -54,6 +54,11 @@
 </html>
 <?php
 error_reporting(0);
+session_start();
+$userProfile=$_SESSION['user'];
+if(!$userProfile){
+header('location:log_in.php');
+}
 if ($_POST['register']) {
     $userName = $_POST['name'];
     $userEmail = $_POST['email'];

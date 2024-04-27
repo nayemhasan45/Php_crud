@@ -1,4 +1,9 @@
 <?php include('connect.php');
+session_start();
+$userProfile=$_SESSION['user'];
+if(!$userProfile){
+header('location:log_in.php');
+}
 $id = $_GET['id'];
 $getData = "SELECT * FROM userdata WHERE id=$id";
 $data = mysqli_query($con, $getData);

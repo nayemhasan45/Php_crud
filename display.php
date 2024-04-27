@@ -1,3 +1,8 @@
+<?php
+    session_start();
+    echo "Welcome ".$_SESSION['user'];
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -67,6 +72,10 @@
 </html>
 <?php
 include("connect.php");
+$userProfile=$_SESSION['user'];
+if(!$userProfile){
+header('location:log_in.php');
+}
 $getData = "SELECT * FROM userdata";
 $data = mysqli_query($con, $getData);
 $row = mysqli_num_rows($data);
@@ -76,7 +85,7 @@ if ($row != 0) {
     <div class="container">
         <div class="heading">
             <h2 class="heading_text">Displaying All User</h2>
-            <button class="SignUp"><a href="http://localhost/assignment/lab_work_5/">Sign Up</a></button>
+            <button class="SignUp"><a href="http://localhost/assignment/lab_work_5/sign_up.php">Add New User</a></button>
         </div>
         <table class="table" border="2" cellspacing="7" width="100%">
             <tr>
